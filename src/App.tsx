@@ -1,5 +1,6 @@
 import React from "react";
-import { AppRoot, View } from "@vkontakte/vkui";
+import { AdaptivityProvider, AppRoot, ConfigProvider, SplitCol, SplitLayout, View } from "@vkontakte/vkui";
+import '@vkontakte/vkui/dist/vkui.css';
 import MainPage from "./components/MainPage";
 import AddProgramPage from "./components/AddProgramPage";
 import MuscleGroupPage from "./components/MuscleGroupPage";
@@ -9,16 +10,24 @@ import ExercisePage from "./components/ExercisePage";
 
 const App: React.FC = () => {
   return (
-    <AppRoot>
-      <View activePanel="main">
-        <MainPage id="main"/>
-        <AddProgramPage id="addProgram"/>
-        <MuscleGroupPage id="muscleGroup"/>
-        <AddExercisePage id="addExercise"/>
-        <TrainItemPage id="train"/>
-        <ExercisePage id="exercise"/>
-      </View>
-    </AppRoot>
+    <ConfigProvider>
+      <AdaptivityProvider>
+        <AppRoot>
+          <SplitLayout>
+            <SplitCol>
+              <View activePanel="main">
+                <MainPage id="main" />
+                <AddProgramPage id="addProgram" />
+                <MuscleGroupPage id="muscleGroup" />
+                <AddExercisePage id="addExercise" />
+                <TrainItemPage id="train" />
+                <ExercisePage id="exercise" />
+              </View>
+            </SplitCol>
+          </SplitLayout>
+        </AppRoot>
+      </AdaptivityProvider>
+    </ConfigProvider>
   );
 }
 
