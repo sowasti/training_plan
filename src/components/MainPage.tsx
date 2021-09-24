@@ -1,10 +1,15 @@
+import { Panel } from "@vkontakte/vkui";
 import React from "react";
 
-const MainPage: React.FC = () => {
+interface IMainProps{
+  id: string
+}
+
+const MainPage: React.FC<IMainProps> = ({id}) => {
   return (
-   <div>
+   <Panel id={id}>
      
-   </div>
+   </Panel>
 
   );
 }

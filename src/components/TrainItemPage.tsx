@@ -1,10 +1,15 @@
+import { Panel } from "@vkontakte/vkui";
 import React from "react";
 
-const TrainItemPage: React.FC = ()=> {
+interface ITrainItemProps{
+  id: string
+}
+
+const TrainItemPage: React.FC<ITrainItemProps> = ({id})=> {
   return (
-    <div>
-      
-    </div>
+    <Panel id={id}>
+     
+    </Panel>
   );
 }
 

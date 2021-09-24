@@ -1,10 +1,15 @@
+import { Panel } from "@vkontakte/vkui";
 import React from "react";
 
-const MuscleGroupPage: React.FC = ()=> {
+interface IMuscleGroupProps{
+  id: string
+}
+
+const MuscleGroupPage: React.FC<IMuscleGroupProps> = ({id})=> {
   return (
-    <div>
-      
-    </div>
+    <Panel id={id}>
+     
+    </Panel>
   );
 }
 

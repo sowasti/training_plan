@@ -1,10 +1,15 @@
+import { Panel } from "@vkontakte/vkui";
 import React from "react";
 
-const AddProgramPage: React.FC = ()=> {
+interface IAddProgramProps{
+  id: string
+}
+
+const AddProgramPage: React.FC<IAddProgramProps> = ({id})=> {
   return (
-    <div>
-      
-    </div>
+    <Panel id={id}>
+     
+    </Panel>
   );
 }
 

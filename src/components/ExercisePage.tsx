@@ -1,10 +1,15 @@
+import { Panel } from "@vkontakte/vkui";
 import React from "react";
 
-const ExercisePage: React.FC = ()=> {
+interface IExerciseProps{
+  id: string
+}
+
+const ExercisePage: React.FC<IExerciseProps> = ({id})=> {
   return (
-    <div>
-      
-    </div>
+    <Panel id={id}>
+     
+    </Panel>
   );
 }
 
