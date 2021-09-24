@@ -1,10 +1,11 @@
 import React from "react";
 
-const MainPage: React.FC = ()=> {
+const MainPage: React.FC = () => {
   return (
-    <div>
-      gfhfghfghfghfg
-    </div>
+   <div>
+     
+   </div>
+
   );
 }
 
