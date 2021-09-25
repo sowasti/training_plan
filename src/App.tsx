@@ -1,5 +1,5 @@
 import React from "react";
-import { AdaptivityProvider, AppRoot, ConfigProvider, SplitCol, SplitLayout, View } from "@vkontakte/vkui";
+import { AdaptivityProvider, AppRoot, ConfigProvider, View } from "@vkontakte/vkui";
 import '@vkontakte/vkui/dist/vkui.css';
 import MainPage from "./components/MainPage";
 import AddProgramPage from "./components/AddProgramPage";
@@ -12,9 +12,7 @@ const App: React.FC = () => {
   return (
     <ConfigProvider>
       <AdaptivityProvider>
-        <AppRoot>
-          <SplitLayout>
-            <SplitCol>
+        <AppRoot>          
               <View activePanel="addProgram">
                 <MainPage id="main" />
                 <AddProgramPage id="addProgram" />
@@ -22,9 +20,7 @@ const App: React.FC = () => {
                 <AddExercisePage id="addExercise" />
                 <TrainItemPage id="train" />
                 <ExercisePage id="exercise" />
-              </View>
-            </SplitCol>
-          </SplitLayout>
+              </View>          
         </AppRoot>
       </AdaptivityProvider>
     </ConfigProvider>
