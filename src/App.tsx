@@ -15,7 +15,7 @@ const App: React.FC = () => {
         <AppRoot>
           <SplitLayout>
             <SplitCol>
-              <View activePanel="exercise">
+              <View activePanel="muscleGroup">
                 <MainPage id="main" />
                 <AddProgramPage id="addProgram" />
                 <MuscleGroupPage id="muscleGroup" />

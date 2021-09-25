@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Div, FixedLayout, FormItem, FormLayout, Group, Header, IconButton, Input, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui";
+import { Button, Div, FixedLayout, FormItem, FormLayout, Group, Header,Input, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui";
 import { Icon36Done } from '@vkontakte/icons';
 interface IExerciseProps {
   id: string
