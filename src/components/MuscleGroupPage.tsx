@@ -1,5 +1,5 @@
 import React from "react";
-import { Cell, CellButton, Group, Header, List, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui";
+import {  CellButton, Group, Header, List, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui";
 import { Icon56AccessibilityOutline } from '@vkontakte/icons';
 
 const muscleGroup = [

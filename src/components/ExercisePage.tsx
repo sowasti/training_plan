@@ -10,7 +10,7 @@ const ExercisePage: React.FC<IExerciseProps> = ({ id }) => {
     <Panel id={id}>
       <PanelHeader left={<PanelHeaderBack />}>Скручивания лежа</PanelHeader>
       <Group header={<Header mode="secondary">Заполните данные по упражнению</Header>}>
-        <FormLayout>
+        <FormLayout style={{paddingBottom: 60}}>
           <FormItem top="Количество подходов">
             <Input type="number" />
           </FormItem>
