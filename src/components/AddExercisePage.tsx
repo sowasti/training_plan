@@ -1,14 +1,16 @@
 import React from "react";
 import { Button, Div, FixedLayout, Group, IconButton, List, Panel, PanelHeader, PanelHeaderBack, SimpleCell } from "@vkontakte/vkui";
 import { Icon24AddOutline } from '@vkontakte/icons';
+import { withRouter } from 'react-router-vkminiapps';
 interface IAddExerciseProps {
   id: string
+  router: any
 }
 
-const AddExercisePage: React.FC<IAddExerciseProps> = ({ id }) => {
+const AddExercisePage: React.FC<IAddExerciseProps> = ({ id, router }) => {
   return (
     <Panel id={id}>
-      <PanelHeader left={<PanelHeaderBack />}>Ягодицы</PanelHeader>
+      <PanelHeader left={<PanelHeaderBack onClick={()=> router.toBack()}/>}>Ягодицы</PanelHeader>
       <Group style={{ paddingBottom: 60 }}>
       <List>
           <SimpleCell disabled after={<IconButton>< Icon24AddOutline /></IconButton>}>Присед</SimpleCell>
@@ -19,11 +21,11 @@ const AddExercisePage: React.FC<IAddExerciseProps> = ({ id }) => {
       </Group>
       <FixedLayout vertical="bottom">
         <Div>
-          <Button stretched size="l">Вернуться к добавлению программы</Button>
+          <Button stretched size="l" onClick={()=> router.toPanel("addProgramPage")}>Вернуться к добавлению программы</Button>
         </Div>
       </FixedLayout>
     </Panel>
   );
 }
 
-export default AddExercisePage;
+export default withRouter(AddExercisePage);

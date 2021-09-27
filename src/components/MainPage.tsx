@@ -1,11 +1,13 @@
 import React from "react";
 import { Avatar, Button, Cell, Div, FixedLayout, Group, List, Panel, PanelHeader, Placeholder } from "@vkontakte/vkui";
 import { Icon56ErrorOutline } from '@vkontakte/icons';
+import { withRouter } from 'react-router-vkminiapps';
 interface IMainProps {
   id: string
+  router: any
 }
 
-const MainPage: React.FC<IMainProps> = ({ id }) => {
+const MainPage: React.FC<IMainProps> = ({ id, router }) => {
   return (
     <Panel id={id}>
       <PanelHeader>План тренировок</PanelHeader>
@@ -41,7 +43,7 @@ const MainPage: React.FC<IMainProps> = ({ id }) => {
       </div>
       <FixedLayout vertical="bottom">
         <Div>
-          <Button stretched size="l">Добавить программу</Button>
+          <Button stretched size="l" onClick={()=> router.toPanel("addProgramPage")}>Добавить программу</Button>
         </Div>
       </FixedLayout>
     </Panel>
@@ -49,4 +51,4 @@ const MainPage: React.FC<IMainProps> = ({ id }) => {
   );
 }
 
-export default MainPage;
+export default withRouter(MainPage);

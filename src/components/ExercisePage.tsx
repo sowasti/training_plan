@@ -1,14 +1,16 @@
 import React from "react";
 import { Button, Div, FixedLayout, FormItem, FormLayout, Group, Header,Input, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui";
 import { Icon36Done } from '@vkontakte/icons';
+import { withRouter } from 'react-router-vkminiapps';
 interface IExerciseProps {
   id: string
+  router: any
 }
 
-const ExercisePage: React.FC<IExerciseProps> = ({ id }) => {
+const ExercisePage: React.FC<IExerciseProps> = ({ id, router }) => {
   return (
     <Panel id={id}>
-      <PanelHeader left={<PanelHeaderBack />}>Скручивания лежа</PanelHeader>
+      <PanelHeader left={<PanelHeaderBack onClick={()=> router.toBack()}/>}>Скручивания лежа</PanelHeader>
       <Group header={<Header mode="secondary">Заполните данные по упражнению</Header>}>
         <FormLayout style={{paddingBottom: 60}}>
           <FormItem top="Количество подходов">
@@ -49,4 +51,4 @@ const ExercisePage: React.FC<IExerciseProps> = ({ id }) => {
   );
 }
 
-export default ExercisePage;
+export default withRouter(ExercisePage);

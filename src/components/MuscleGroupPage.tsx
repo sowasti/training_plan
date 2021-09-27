@@ -1,6 +1,7 @@
 import React from "react";
 import {  CellButton, Group, Header, List, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui";
 import { Icon56AccessibilityOutline } from '@vkontakte/icons';
+import { withRouter } from "react-router-vkminiapps";
 
 const muscleGroup = [
   {
@@ -38,12 +39,13 @@ const muscleGroup = [
 ]
 interface IMuscleGroupProps {
   id: string
+  router: any
 }
 
-const MuscleGroupPage: React.FC<IMuscleGroupProps> = ({ id }) => {
+const MuscleGroupPage: React.FC<IMuscleGroupProps> = ({ id, router }) => {
   return (
     <Panel id={id}>
-      <PanelHeader left={<PanelHeaderBack />}>База упражнений</PanelHeader>
+      <PanelHeader left={<PanelHeaderBack onClick={()=> router.toBack()}/>}>База упражнений</PanelHeader>
       <Group header={<Header mode="secondary">Выберите группу мыщц</Header>}>
         <List>
           {muscleGroup.map(item =>
@@ -55,4 +57,4 @@ const MuscleGroupPage: React.FC<IMuscleGroupProps> = ({ id }) => {
   );
 }
 
-export default MuscleGroupPage;
+export default withRouter(MuscleGroupPage);

@@ -3,14 +3,16 @@ import { Button, Div, FixedLayout, Group, IconButton, List, Panel, PanelHeader, 
 import { Icon24CancelOutline, Icon20Add, Icon24Play } from '@vkontakte/icons';
 import { Icon16PlayCircleFillAzure } from '@vkontakte/icons';
 import { Icon24DeleteOutlineAndroid } from '@vkontakte/icons';
+import { withRouter } from 'react-router-vkminiapps';
 interface ITrainItemProps {
   id: string
+  router: any
 }
 
-const TrainItemPage: React.FC<ITrainItemProps> = ({ id }) => {
+const TrainItemPage: React.FC<ITrainItemProps> = ({ id, router }) => {
   return (
     <Panel id={id}>
-      <PanelHeader left={<PanelHeaderBack />}>Пн/Спина грудь</PanelHeader>
+      <PanelHeader left={<PanelHeaderBack onClick={()=> router.toBack()}/>}>Пн/Спина грудь</PanelHeader>
       <Group style={{ paddingBottom: 60 }}>
         <Div>
           <Button stretched mode="tertiary" size="m" before={<Icon16PlayCircleFillAzure/>}>Начать тренировку</Button>
@@ -24,11 +26,11 @@ const TrainItemPage: React.FC<ITrainItemProps> = ({ id }) => {
       </Group>
       <FixedLayout vertical="bottom">
         <Div>
-          <Button before={<Icon20Add />} stretched size="l">Добавить упражнения</Button>
+          <Button before={<Icon20Add />} stretched size="l" onClick={()=> router.toPanel("muscleGroupPage")}>Добавить упражнения</Button>
         </Div>
       </FixedLayout>
     </Panel>
   );
 }
 
-export default TrainItemPage;
+export default withRouter(TrainItemPage);

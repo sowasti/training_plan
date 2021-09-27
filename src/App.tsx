@@ -7,21 +7,26 @@ import MuscleGroupPage from "./components/MuscleGroupPage";
 import AddExercisePage from "./components/AddExercisePage";
 import TrainItemPage from "./components/TrainItemPage";
 import ExercisePage from "./components/ExercisePage";
+import { withRouter } from 'react-router-vkminiapps';
 
-const App: React.FC = () => {
+interface IApp{
+  router: any
+}
+
+const App: React.FC<IApp> = ({router}) => {
   return (
     <ConfigProvider>
       <AdaptivityProvider>
         <AppRoot>
           <SplitLayout>
             <SplitCol>
-              <View activePanel="addExercise">
-                <MainPage id="main" />
-                <AddProgramPage id="addProgram" />
-                <MuscleGroupPage id="muscleGroup" />
-                <AddExercisePage id="addExercise" />
-                <TrainItemPage id="train" />
-                <ExercisePage id="exercise" />
+              <View activePanel={router.activePanel}>
+                <MainPage id="mainPage" />
+                <AddProgramPage id="addProgramPage" />
+                <MuscleGroupPage id="muscleGroupPage" />
+                <AddExercisePage id="addExercisePage" />
+                <TrainItemPage id="trainItemPage" />
+                <ExercisePage id="exercisePage" />
               </View>
             </SplitCol>
           </SplitLayout>
@@ -31,4 +36,4 @@ const App: React.FC = () => {
   );
 }
 
-export default App;
+export default withRouter(App);
