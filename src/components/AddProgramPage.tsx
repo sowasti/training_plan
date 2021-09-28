@@ -13,12 +13,12 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
       <PanelHeader left={<PanelHeaderBack onClick={()=> router.toBack()}/>}>Добавление тренировки</PanelHeader>
       <FormLayout>
         <FormItem top="Введите название тренировки">
-          <Input type="text" />
+          <Input type="text" name="trainName"/>
         </FormItem>
         <FormItem top="Выберите день недели">
           <Select
             value="monday"
-            name="dayOfWeek"
+            name="dayWeek"
             options={[
               { value: "monday", label: 'Понедельник' },
               { value: "tuesday", label: 'Вторник' },

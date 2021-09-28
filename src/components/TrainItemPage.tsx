@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Div, FixedLayout, Group, IconButton, List, Panel, PanelHeader, PanelHeaderBack, SimpleCell } from "@vkontakte/vkui";
-import { Icon24CancelOutline, Icon20Add, Icon24Play } from '@vkontakte/icons';
+import { Icon24CancelOutline, Icon20Add } from '@vkontakte/icons';
 import { Icon16PlayCircleFillAzure } from '@vkontakte/icons';
-import { Icon24DeleteOutlineAndroid } from '@vkontakte/icons';
+
 import { withRouter } from 'react-router-vkminiapps';
 interface ITrainItemProps {
   id: string

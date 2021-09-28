@@ -14,14 +14,14 @@ const ExercisePage: React.FC<IExerciseProps> = ({ id, router }) => {
       <Group header={<Header mode="secondary">Заполните данные по упражнению</Header>}>
         <FormLayout style={{paddingBottom: 60}}>
           <FormItem top="Количество подходов">
-            <Input type="number" />
+            <Input type="number" name="sets"/>
           </FormItem>
           <FormItem top="1 подход">
             <div style={{ display: "flex", justifyContent: 'space-between' }}>
               <p>Вес</p>
-              <Input type="number" />
+              <Input type="number" name="weigth"/>
               <p>Повторений</p>
-              <Input type="number" />
+              <Input type="number" name="count"/>
             </div>
           </FormItem>
           <FormItem top="2 подход">
