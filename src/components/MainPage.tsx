@@ -1,6 +1,6 @@
 import React from "react";
-import { Avatar, Button, Cell, Div, FixedLayout, Group, List, Panel, PanelHeader, Placeholder } from "@vkontakte/vkui";
-import { Icon56ErrorOutline } from '@vkontakte/icons';
+import { Avatar, Button, Div, FixedLayout, Group, IconButton, List, Panel, PanelHeader, Placeholder, SimpleCell } from "@vkontakte/vkui";
+import { Icon24DeleteOutline, Icon56ErrorOutline } from '@vkontakte/icons';
 import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
 interface IMainProps {
@@ -20,13 +20,19 @@ const MainPage: React.FC<IMainProps> = ({ id, router }) => {
         :  <Group>
         <List>
           {trainPlan.map(item=>
-            <Cell 
-            expandable 
-            before={<Avatar style={{background: "#2787f5"}} size={32}><p style={{color: "white"}}>{item.daysWeek}</p></Avatar>}
-            removable
+           <SimpleCell
+             before={<Avatar style={{background: "#2787f5"}} size={32}><p style={{color: "white"}}>{item.daysWeek}</p></Avatar>}
+             after={<IconButton>< Icon24DeleteOutline /></IconButton>}
           >
             {item.trainName}
-          </Cell>
+          </SimpleCell>
+          //   <Cell 
+          //   expandable 
+          //   before={<Avatar style={{background: "#2787f5"}} size={32}><p style={{color: "white"}}>{item.daysWeek}</p></Avatar>}
+          //   removable
+          // >
+          //   {item.trainName}
+          // </Cell>
             )}         
         </List>
       </Group>

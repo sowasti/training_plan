@@ -34,7 +34,7 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
       daysWeek,
       exercisesTrain: [] 
     };
-    setTrainPlan([program, ...trainPlan]);
+    setTrainPlan([...trainPlan, program]);
     router.toPanel("mainPage");
 
   }
