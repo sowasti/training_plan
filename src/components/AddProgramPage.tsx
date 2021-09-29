@@ -19,9 +19,6 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
         setTrainName(e.target.value);
         break;
       case "daysWeek":
-        console.log(daysWeek)
-        console.log(e.target.name)
-        console.log(e.target.value)
         setDaysWeek(e.target.value);
         break;
       default:

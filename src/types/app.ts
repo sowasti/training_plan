@@ -29,7 +29,7 @@ export interface IState {
   daysWeek: string
   trainPlan: ITrainTtems[]
   exercisesTrain: IExercisesTrain[]
-  activeTrain: Object
+  activeTrain: any
   muscleGroup: IMuscleGroup[]
   exercise: IExercise[]
   sets: number
@@ -68,7 +68,7 @@ export interface ISetExerciseTrain {
 }
 export interface ISetActiveTrain {
   type: AppActionTypes.APP_SET_ACTIVE_TRAIN
-  payload: Object
+  payload: any
 }
 export interface ISetMuscleGroup {
   type: AppActionTypes.APP_SET_MUSCLE_GROUP

@@ -12,15 +12,22 @@ interface IMainProps {
 }
 
 const MainPage: React.FC<IMainProps> = ({ id, router }) => {
-  const { trainPlan } = useTypeSelector(state => state.app);
-  const { setTrainPlan } = useActions();
   const [alert, setAlert] = useState<ReactNode>(null);
+  const { trainPlan } = useTypeSelector(state => state.app);
+  const { setTrainPlan, setActiveTrain } = useActions();
+  
   const removeTrainFromPlan = (id: number)=>{
     setAlert(<RemoveAlert
       text="Вы действительно хотите удалить эту тренировку?"
       onClose={()=>setAlert(null)}
       action={()=> setTrainPlan(trainPlan.filter(item=> item.id !== id))}
     />);   
+  }
+  const openTrain = (id: number)=>{
+    const program = trainPlan.filter(item=> item.id === id); 
+    console.log(program)   
+    setActiveTrain(program[0]);
+    router.toPanel("trainItemPage");
   }
   return (
     <Panel id={id}>
@@ -36,6 +43,7 @@ const MainPage: React.FC<IMainProps> = ({ id, router }) => {
                   name={item.trainName}
                   days={item.daysWeek}
                   remove={()=>removeTrainFromPlan(item.id)}
+                  click={()=>openTrain(item.id)}
                 />               
               )}
             </List>
