@@ -1,6 +1,7 @@
 import {
   AppActions,
   AppActionTypes,
+  ISetActiveTrain,
   ISetCount,
   ISetDaysWeek,
   ISetExercise,
@@ -33,6 +34,12 @@ export const setTrainPlan = (payload: ISetTrainPlan['payload']) => {
 export const setExercisesTrain = (payload: ISetExerciseTrain['payload']) => {
   return {
     type: AppActionTypes.APP_SET_EXERCISE_TRAIN,
+    payload
+  }
+}
+export const setActiveTrain = (payload: ISetActiveTrain['payload']) => {
+  return {
+    type: AppActionTypes.APP_SET_ACTIVE_TRAIN,
     payload
   }
 }

@@ -29,6 +29,7 @@ export interface IState {
   daysWeek: string
   trainPlan: ITrainTtems[]
   exercisesTrain: IExercisesTrain[]
+  activeTrain: Object
   muscleGroup: IMuscleGroup[]
   exercise: IExercise[]
   sets: number
@@ -41,6 +42,7 @@ export enum AppActionTypes {
   APP_SET_DAYS_WEEK = 'APP/SET_DAYS_WEEK',
   APP_SET_TRAIN_PLAN = 'APP/SET_TRAIN_PLAN',
   APP_SET_EXERCISE_TRAIN = 'APP/SET_EXERCISE_TRAIN',
+  APP_SET_ACTIVE_TRAIN = 'APP/SET_ACTIVE_TRAIN',
   APP_SET_MUSCLE_GROUP = 'APP/SET_MUSCLE_GROUP',
   APP_SET_EXERCISE = 'APP/SET_EXERCISE',
   APP_SET_SETS = 'APP/SET_SETS',
@@ -64,6 +66,10 @@ export interface ISetExerciseTrain {
   type: AppActionTypes.APP_SET_EXERCISE_TRAIN
   payload: IExercisesTrain[]
 }
+export interface ISetActiveTrain {
+  type: AppActionTypes.APP_SET_ACTIVE_TRAIN
+  payload: Object
+}
 export interface ISetMuscleGroup {
   type: AppActionTypes.APP_SET_MUSCLE_GROUP
   payload: IMuscleGroup[]
@@ -85,4 +91,4 @@ export interface ISetCount {
   payload: number
 }
 
-export type AppActions = ISetTrainName | ISetDaysWeek | ISetTrainPlan | ISetExerciseTrain | ISetMuscleGroup | ISetExercise | ISetSets | ISetWeigth | ISetCount;
+export type AppActions = ISetTrainName | ISetDaysWeek | ISetTrainPlan | ISetExerciseTrain | ISetActiveTrain | ISetMuscleGroup | ISetExercise | ISetSets | ISetWeigth | ISetCount;
