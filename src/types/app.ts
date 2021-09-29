@@ -1,4 +1,5 @@
 export interface ITrainTtems {
+  id: number
   trainName: string
   daysWeek: string
   exercisesTrain: IExercisesTrain[]

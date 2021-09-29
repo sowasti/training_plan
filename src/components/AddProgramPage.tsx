@@ -10,7 +10,7 @@ interface IAddProgramProps {
 }
 
 const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
-  const { daysWeek, trainName, exercisesTrain, trainPlan } = useTypeSelector(state => state.app);
+  const { daysWeek, trainName, trainPlan } = useTypeSelector(state => state.app);
   const { setTrainName, setDaysWeek, setTrainPlan } = useActions();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -30,6 +30,7 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
   }
   const addProgram = ()=>{
     const program = {
+      id: Date.now(),
       trainName,
       daysWeek,
       exercisesTrain: [] 
