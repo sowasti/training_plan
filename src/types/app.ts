@@ -14,24 +14,14 @@ export interface IApproachItems {
   weigth: number
   count: number
 }
-
-export interface IMuscleGroup {
-  nameMuscleGroup: string
-  exercise: any[]
-}
-export interface IExercise {
-  nameExercise: string
-  muscleGroup: string
-}
-
 export interface IState {
   trainName: string
   daysWeek: string
   trainPlan: ITrainTtems[]
   exercisesTrain: IExercisesTrain[]
   activeTrain: any
-  muscleGroup: IMuscleGroup[]
-  exercise: IExercise[]
+  muscleGroup: any[]
+  exercise: any[]
   sets: number
   weigth: number | string
   count: number | string
@@ -72,11 +62,11 @@ export interface ISetActiveTrain {
 }
 export interface ISetMuscleGroup {
   type: AppActionTypes.APP_SET_MUSCLE_GROUP
-  payload: IMuscleGroup[]
+  payload: any[]
 }
 export interface ISetExercise {
   type: AppActionTypes.APP_SET_EXERCISE
-  payload: IExercise[]
+  payload: any[]
 }
 export interface ISetSets {
   type: AppActionTypes.APP_SET_SETS

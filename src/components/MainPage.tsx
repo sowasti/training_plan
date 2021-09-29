@@ -52,7 +52,7 @@ const MainPage: React.FC<IMainProps> = ({ id, router }) => {
       </div>
       <FixedLayout vertical="bottom">
         <Div>
-          <Button stretched size="l" onClick={() => router.toPanel("addProgramPage")}>Добавить программу</Button>
+          <Button stretched size="m" onClick={() => router.toPanel("addProgramPage")}>Добавить программу</Button>
         </Div>
       </FixedLayout>
       {alert}
