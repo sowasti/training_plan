@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from 'react-router-vkminiapps';
 import structure from './structure';
+import { Provider } from 'react-redux';
+import store from './store';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import App from './App';
@@ -9,7 +11,9 @@ import App from './App';
 ReactDOM.render(
   <React.StrictMode>
     <Router structure={structure}>
-    <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

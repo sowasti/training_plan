@@ -2,7 +2,7 @@ import { AppActions, AppActionTypes, IState } from "../../types/app";
 
 const initialState: IState = {
   trainName: "",
-  daysWeek: "",
+  daysWeek: "monday",
   trainPlan: [],
   exercisesTrain: [],
   muscleGroup: [],
