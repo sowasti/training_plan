@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Div, FixedLayout, Group, IconButton, List, Panel, PanelHeader, PanelHeaderBack, SimpleCell } from "@vkontakte/vkui";
-import { Icon24CancelOutline, Icon20Add } from '@vkontakte/icons';
+import { Button, Div, FixedLayout, Group, Placeholder, List, Panel, PanelHeader, PanelHeaderBack} from "@vkontakte/vkui";
+import { Icon56ErrorOutline, Icon20Add } from '@vkontakte/icons';
 import { Icon16PlayCircleFillAzure } from '@vkontakte/icons';
 
 import { withRouter } from 'react-router-vkminiapps';
@@ -11,25 +11,29 @@ interface ITrainItemProps {
 }
 
 const TrainItemPage: React.FC<ITrainItemProps> = ({ id, router }) => {
-  const {activeTrain} = useTypeSelector(state=> state.app);
-
+  const { activeTrain} = useTypeSelector(state => state.app);
+  
   return (
     <Panel id={id}>
-      <PanelHeader left={<PanelHeaderBack onClick={()=> router.toBack()}/>}>{`(${activeTrain.daysWeek}) ${activeTrain.trainName}`}</PanelHeader>
+      <PanelHeader left={<PanelHeaderBack onClick={() => router.toBack()} />}>{`(${activeTrain.daysWeek}) ${activeTrain.trainName}`}</PanelHeader>
       <Group style={{ paddingBottom: 60 }}>
-        <Div>
-          <Button stretched mode="tertiary" size="m" before={<Icon16PlayCircleFillAzure/>}>Начать тренировку</Button>
-        </Div>
-        <List>
-          <SimpleCell after={<IconButton>< Icon24CancelOutline /></IconButton>}>Присед</SimpleCell>
-          <SimpleCell after={<IconButton>< Icon24CancelOutline /></IconButton>}>Жим</SimpleCell>
-          <SimpleCell after={<IconButton>< Icon24CancelOutline /></IconButton>}>Скручивания</SimpleCell>
-          <SimpleCell after={<IconButton>< Icon24CancelOutline /></IconButton>}>Отжимания</SimpleCell>
-        </List>
+        {activeTrain.exercisesTrain.length === 0
+          ? <Placeholder stretched icon={<Icon56ErrorOutline />}>Нет добавленных упражнений для начала тренировки!</Placeholder>
+          : <>
+            <Div>
+              <Button stretched mode="tertiary" size="m" before={<Icon16PlayCircleFillAzure />}>Начать тренировку</Button>
+            </Div>
+            <List>
+              {/* {exercisesTrain.map(item =>
+                <CellButton>{item.nameExercise}</CellButton>
+              )} */}
+            </List>
+          </>
+        }
       </Group>
       <FixedLayout vertical="bottom">
         <Div>
-          <Button before={<Icon20Add />} stretched size="l" onClick={()=> router.toPanel("muscleGroupPage")}>Добавить упражнения</Button>
+          <Button before={<Icon20Add />} stretched size="l" onClick={() => router.toPanel("muscleGroupPage")}>Добавить упражнения</Button>
         </Div>
       </FixedLayout>
     </Panel>
