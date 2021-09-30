@@ -23,10 +23,8 @@ const MainPage: React.FC<IMainProps> = ({ id, router }) => {
       action={()=> setTrainPlan(trainPlan.filter(item=> item.id !== id))}
     />);   
   }
-  const openTrain = (id: number)=>{
-    const program = trainPlan.filter(item=> item.id === id); 
-    console.log(program)   
-    setActiveTrain(program[0]);
+  const openTrain = (item: Object)=>{    
+    setActiveTrain(item);
     router.toPanel("trainItemPage");
   }
   return (
@@ -43,7 +41,7 @@ const MainPage: React.FC<IMainProps> = ({ id, router }) => {
                   name={item.trainName}
                   days={item.daysWeek}
                   remove={()=>removeTrainFromPlan(item.id)}
-                  click={()=>openTrain(item.id)}
+                  click={()=>openTrain(item)}
                 />               
               )}
             </List>
