@@ -3,6 +3,7 @@ import { Avatar, Cell, Group, Header, List, Panel, PanelHeader, PanelHeaderBack,
 import { Icon20ChevronRightOutline } from '@vkontakte/icons';
 import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
+import ExerciseItem from "./ExerciseItem";
 interface IAddExerciseProps {
   id: string
   router: any
@@ -10,20 +11,20 @@ interface IAddExerciseProps {
 
 const AddExercisePage: React.FC<IAddExerciseProps> = ({ id, router }) => {
   const { activeExercise, activeMuscleGroup } = useTypeSelector(state => state.app);
-
+  const openExercise = ()=>{
+    
+  }
   return (
     <Panel id={id}>
       <PanelHeader left={<PanelHeaderBack onClick={() => router.toBack()} />}>{activeMuscleGroup}</PanelHeader>
       <Group style={{ paddingBottom: 60 }} header={<Header mode="secondary">Список упражнений</Header>}>
         <List>
           {activeExercise.map((item, i) =>
-            <Cell
+            <ExerciseItem
               key={i}
-              before={<Avatar style={{ background: "#3f8ae0" }} size={10} />}
-              after={<Icon20ChevronRightOutline />}
-            >
-              {item.name}
-            </Cell>
+              name={item.name}
+              openExercise={openExercise}
+            />
           )}
         </List>
       </Group>
