@@ -1,17 +1,24 @@
 import React from "react";
+import { connect } from 'react-redux';
 import { Button, Div, FixedLayout, FormItem, FormLayout, FormLayoutGroup, Group, Header, Input, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui";
-import { Icon36Done } from '@vkontakte/icons';
+// import { Icon36Done } from '@vkontakte/icons';
 import { withRouter } from 'react-router-vkminiapps';
-import { useTypeSelector } from "../hooks/useTypeSelector";
-interface IExerciseProps {
+import { RootState } from "../store/reducers";
+type IExerciseProps = RootState['app'] & {
   id: string
   router: any
 }
-
-const ExercisePage: React.FC<IExerciseProps> = ({ id, router }) => {
-  const { activeExercise } = useTypeSelector(state => state.app);
-  return (
-    <Panel id={id}>
+class ExercisePage extends React.Component<IExerciseProps>{
+  constructor(props: IExerciseProps){
+   super(props);
+   this.state={
+     sets: ""
+   } 
+  }
+  render(){
+    const { id, router, activeExercise} = this.props;
+    return(
+      <Panel id={id}>
       <PanelHeader left={<PanelHeaderBack onClick={() => router.toBack()} />}>{activeExercise.name}</PanelHeader>
       <Group header={<Header mode="secondary">Заполните данные по упражнению</Header>}>
         <FormLayout style={{ paddingBottom: 60 }}>
@@ -53,7 +60,62 @@ const ExercisePage: React.FC<IExerciseProps> = ({ id, router }) => {
         </FixedLayout>
       </Group>
     </Panel>
-  );
+    );
+  }
 }
 
-export default withRouter(ExercisePage);
+// const ExercisePage: React.FC<IExerciseProps> = ({ id, router }) => {
+//   const { activeExercise } = useTypeSelector(state => state.app);
+//   return (
+//     <Panel id={id}>
+//       <PanelHeader left={<PanelHeaderBack onClick={() => router.toBack()} />}>{activeExercise.name}</PanelHeader>
+//       <Group header={<Header mode="secondary">Заполните данные по упражнению</Header>}>
+//         <FormLayout style={{ paddingBottom: 60 }}>
+//           <FormItem bottom="Киличество подходов">
+//             <Input type="number" name="sets" />
+//           </FormItem>
+//           <Header mode="tertiary">1 подход</Header>
+//           <FormLayoutGroup mode="horizontal">
+//             <FormItem bottom="Введите вес">
+//               <Input type="number" name="weigth" />
+//             </FormItem>
+//             <FormItem bottom="Сколько повторений">
+//               <Input type="number" name="count" />
+//             </FormItem>
+//           </FormLayoutGroup>
+//           <Header mode="tertiary">2 подход</Header>
+//           <FormLayoutGroup mode="horizontal">
+//             <FormItem bottom="Введите вес">
+//               <Input type="number" name="weigth" />
+//             </FormItem>
+//             <FormItem bottom="Сколько повторений">
+//               <Input type="number" name="count" />
+//             </FormItem>
+//           </FormLayoutGroup>
+//           <Header mode="tertiary">3 подход</Header>
+//           <FormLayoutGroup mode="horizontal">
+//             <FormItem bottom="Введите вес">
+//               <Input type="number" name="weigth" />
+//             </FormItem>
+//             <FormItem bottom="Сколько повторений">
+//               <Input type="number" name="count" />
+//             </FormItem>
+//           </FormLayoutGroup>
+//         </FormLayout>
+//         <FixedLayout vertical="bottom">
+//           <Div>
+//             <Button stretched size="m">Добавить</Button>
+//           </Div>
+//         </FixedLayout>
+//       </Group>
+//     </Panel>
+//   );
+// }
+
+const mapStateToProps = (state: RootState)=>{
+  return {
+    ...state.app
+  }
+}
+
+export default connect(mapStateToProps)(withRouter(ExercisePage));
