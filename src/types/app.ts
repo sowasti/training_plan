@@ -21,6 +21,7 @@ export interface IState {
   exercisesTrain: IExercisesTrain[]
   activeTrain: any
   muscleGroup: any[]
+  activeMuscleGroup: string
   activeExercise: any[]
   sets: number
   weigth: number | string
@@ -34,6 +35,7 @@ export enum AppActionTypes {
   APP_SET_EXERCISE_TRAIN = 'APP/SET_EXERCISE_TRAIN',
   APP_SET_ACTIVE_TRAIN = 'APP/SET_ACTIVE_TRAIN',
   APP_SET_MUSCLE_GROUP = 'APP/SET_MUSCLE_GROUP',
+  APP_SET_ACTIVE_MUSCLE_GROUP = 'APP/SET_ACTIVE_MUSCLE_GROUP',
   APP_SET_ACTIVE_EXERCISE = 'APP/SET_ACTIVE_EXERCISE',
   APP_SET_SETS = 'APP/SET_SETS',
   APP_SET_WEIGTH = 'APP/SET_WEIGTH',
@@ -64,6 +66,10 @@ export interface ISetMuscleGroup {
   type: AppActionTypes.APP_SET_MUSCLE_GROUP
   payload: any[]
 }
+export interface ISetActiveMuscleGroup {
+  type: AppActionTypes.APP_SET_ACTIVE_MUSCLE_GROUP
+  payload: string
+}
 export interface ISetActiveExercise {
   type: AppActionTypes.APP_SET_ACTIVE_EXERCISE
   payload: any[]
@@ -81,4 +87,4 @@ export interface ISetCount {
   payload: number
 }
 
-export type AppActions = ISetTrainName | ISetDaysWeek | ISetTrainPlan | ISetExerciseTrain | ISetActiveTrain | ISetMuscleGroup | ISetActiveExercise | ISetSets | ISetWeigth | ISetCount;
+export type AppActions = ISetTrainName | ISetDaysWeek | ISetTrainPlan | ISetExerciseTrain | ISetActiveTrain | ISetMuscleGroup | ISetActiveMuscleGroup | ISetActiveExercise | ISetSets | ISetWeigth | ISetCount;

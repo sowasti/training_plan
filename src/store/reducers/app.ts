@@ -7,6 +7,7 @@ const initialState: IState = {
   exercisesTrain: [],
   activeTrain: {},
   muscleGroup: [],
+  activeMuscleGroup: "",
   activeExercise: [],
   sets: 3,
   weigth: "",
@@ -27,6 +28,8 @@ export default function reducer(state: IState = initialState, action: AppActions
       return { ...state, activeTrain: action.payload };
     case AppActionTypes.APP_SET_MUSCLE_GROUP:
       return { ...state, muscleGroup: action.payload };
+      case AppActionTypes.APP_SET_ACTIVE_MUSCLE_GROUP:
+      return { ...state, activeMuscleGroup: action.payload };
     case AppActionTypes.APP_SET_ACTIVE_EXERCISE:
       return { ...state, activeExercise: action.payload };
     case AppActionTypes.APP_SET_SETS:
