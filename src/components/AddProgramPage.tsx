@@ -6,6 +6,7 @@ import {
 import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
+import { ITrainTtems } from "../types/app";
 interface IAddProgramProps {
   id: string
   router: any
@@ -28,11 +29,11 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
     }
   }
   const addProgram = () => {
-    const program = {
+    const program: ITrainTtems = {
       id: Date.now(),
       trainName,
       daysWeek,
-      exercisesTrain: []
+      exercisesToTrain: []
     };
     setTrainPlan([...trainPlan, program]);
     router.toPanel("mainPage");
