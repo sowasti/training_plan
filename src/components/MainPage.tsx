@@ -5,12 +5,12 @@ import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
 import TrainPlanItem from "./TrainPlanItem";
-interface IMainProps {
+interface IProps {
   id: string
   router: any
 }
 
-const MainPage: React.FC<IMainProps> = ({ id, router }) => {
+const MainPage: React.FC<IProps> = ({ id, router }) => {
   const { trainPlan } = useTypeSelector(state => state.app);
   const { setActiveTrain } = useActions();
 
@@ -40,7 +40,13 @@ const MainPage: React.FC<IMainProps> = ({ id, router }) => {
       </div>
       <FixedLayout vertical="bottom">
         <Div>
-          <Button stretched size="m" onClick={() => router.toPanel("addProgramPage")}>Добавить программу</Button>
+          <Button
+            stretched
+            size="m"
+            onClick={() => router.toPanel("addProgramPage")}
+          >
+            Добавить программу
+          </Button>
         </Div>
       </FixedLayout>
     </Panel>

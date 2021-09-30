@@ -1,18 +1,16 @@
 import React, { ReactNode, useState } from "react";
 import { Button, Div, FixedLayout, Group, Placeholder, List, Panel, PanelHeader, PanelHeaderBack, } from "@vkontakte/vkui";
-import { Icon56ErrorOutline, Icon20Add } from '@vkontakte/icons';
-import { Icon16PlayCircleFillAzure } from '@vkontakte/icons';
-import { Icon20DeleteOutline } from '@vkontakte/icons';
+import { Icon56ErrorOutline, Icon20Add, Icon16PlayCircleFillAzure, Icon20DeleteOutline } from '@vkontakte/icons';
 import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
 import RemoveAlert from "./RemoveAlert";
-interface ITrainItemProps {
+interface IProps {
   id: string
   router: any
 }
 
-const TrainItemPage: React.FC<ITrainItemProps> = ({ id, router }) => {
+const TrainItemPage: React.FC<IProps> = ({ id, router }) => {
   const [alert, setAlert] = useState<ReactNode | null>(null);
   const { activeTrain, trainPlan } = useTypeSelector(state => state.app);
   const { setTrainPlan } = useActions();

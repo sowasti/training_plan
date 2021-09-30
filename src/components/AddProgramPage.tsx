@@ -1,18 +1,15 @@
 import React from "react";
-import {
-  Button, Cell, Div, FixedLayout, FormItem, FormLayout, Group, Header, Input, List, Panel, PanelHeader, PanelHeaderBack,
-  Select
-} from "@vkontakte/vkui";
+import { Button, Div, FixedLayout, FormItem, FormLayout, Input, Panel, PanelHeader, PanelHeaderBack, Select } from "@vkontakte/vkui";
 import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
 import { ITrainTtems } from "../types/app";
-interface IAddProgramProps {
+interface IProps {
   id: string
   router: any
 }
 
-const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
+const AddProgramPage: React.FC<IProps> = ({ id, router }) => {
   const { daysWeek, trainName, trainPlan } = useTypeSelector(state => state.app);
   const { setTrainName, setDaysWeek, setTrainPlan } = useActions();
 
@@ -42,13 +39,17 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
   return (
     <Panel id={id}>
       <PanelHeader left={<PanelHeaderBack onClick={() => router.toBack()} />}>Добавление тренировки</PanelHeader>
-      <FormLayout>
+      <FormLayout style={{ paddingBottom: 60 }}>
         <FormItem top="Введите название тренировки">
-          <Input type="text" name="trainName" onChange={handleInput} value={trainName} />
+          <Input
+            type="text"
+            name="trainName"
+            onChange={handleInput}
+            value={trainName}
+          />
         </FormItem>
         <FormItem top="Выберите день недели">
           <Select
-            value={daysWeek}
             name="daysWeek"
             options={[
               { value: "1", label: 'Понедельник' },
@@ -60,23 +61,12 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
               { value: "7", label: 'Воскресенье' }
             ]}
             onChange={handleInput}
+            value={daysWeek}
           />
         </FormItem>
       </FormLayout>
-      {!true
-        ? <Group style={{ paddingBottom: 60 }} header={<Header mode="secondary">Добавленные упражнения</Header>}>
-          <List>
-            <Cell removable>Присед</Cell>
-            <Cell removable>Жим</Cell>
-            <Cell removable>Выпады</Cell>
-          </List>
-        </Group>
-        : null
-      }
       <FixedLayout vertical="bottom">
         <Div>
-          <div style={{ marginBottom: 10 }}>
-          </div>
           <Button
             stretched
             size="m"

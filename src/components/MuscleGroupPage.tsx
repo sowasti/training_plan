@@ -4,16 +4,16 @@ import { Icon56AccessibilityOutline } from '@vkontakte/icons';
 import { withRouter } from "react-router-vkminiapps";
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
-interface IMuscleGroupProps {
+interface IProps {
   id: string
   router: any
 }
 
-const MuscleGroupPage: React.FC<IMuscleGroupProps> = ({ id, router }) => {
+const MuscleGroupPage: React.FC<IProps> = ({ id, router }) => {
   const { muscleGroup } = useTypeSelector(state => state.app);
   const { setExerciseInMuscleGroup, setActiveMuscleGroup } = useActions();
 
-  const openMuscleGroup = (name: string) => {    
+  const openMuscleGroup = (name: string) => {
     switch (name) {
       case "Плечи":
         setActiveMuscleGroup(name);

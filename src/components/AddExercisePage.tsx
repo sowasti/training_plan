@@ -1,17 +1,18 @@
 import React from "react";
 import {  Group, Header, List, Panel, PanelHeader, PanelHeaderBack, } from "@vkontakte/vkui";
 import { withRouter } from 'react-router-vkminiapps';
+import { useActions } from "../hooks/useActions";
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import ExerciseItem from "./ExerciseItem";
-import { useActions } from "../hooks/useActions";
-interface IAddExerciseProps {
+interface IProps {
   id: string
   router: any
 }
 
-const AddExercisePage: React.FC<IAddExerciseProps> = ({ id, router }) => {
+const AddExercisePage: React.FC<IProps> = ({ id, router }) => {
   const { exercisesInMuscleGroup, activeMuscleGroup } = useTypeSelector(state => state.app);
   const { setActiveExercise} = useActions();
+
   const openExercise = (item: Object)=>{
     setActiveExercise(item);
     router.toPanel("exercisePage");
