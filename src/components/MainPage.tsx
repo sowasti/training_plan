@@ -1,29 +1,20 @@
-import React, { ReactNode, useState } from "react";
-import {  Button, Div, FixedLayout, Group, List, Panel, PanelHeader, Placeholder } from "@vkontakte/vkui";
+import React from "react";
+import { Button, Div, FixedLayout, Group, List, Panel, PanelHeader, Placeholder } from "@vkontakte/vkui";
 import { Icon56ErrorOutline } from '@vkontakte/icons';
 import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
 import TrainPlanItem from "./TrainPlanItem";
-import RemoveAlert from "./RemoveAlert";
 interface IMainProps {
   id: string
   router: any
 }
 
 const MainPage: React.FC<IMainProps> = ({ id, router }) => {
-  const [alert, setAlert] = useState<ReactNode>(null);
   const { trainPlan } = useTypeSelector(state => state.app);
-  const { setTrainPlan, setActiveTrain } = useActions();
-  
-  const removeTrainFromPlan = (id: number)=>{
-    setAlert(<RemoveAlert
-      text="Вы действительно хотите удалить эту тренировку?"
-      onClose={()=>setAlert(null)}
-      action={()=> setTrainPlan(trainPlan.filter(item=> item.id !== id))}
-    />);   
-  }
-  const openTrain = (item: Object)=>{    
+  const { setActiveTrain } = useActions();
+
+  const openTrain = (item: Object) => {
     setActiveTrain(item);
     router.toPanel("trainItemPage");
   }
@@ -40,9 +31,8 @@ const MainPage: React.FC<IMainProps> = ({ id, router }) => {
                   key={item.id}
                   name={item.trainName}
                   days={item.daysWeek}
-                  remove={()=>removeTrainFromPlan(item.id)}
-                  click={()=>openTrain(item)}
-                />               
+                  click={() => openTrain(item)}
+                />
               )}
             </List>
           </Group>
@@ -53,7 +43,6 @@ const MainPage: React.FC<IMainProps> = ({ id, router }) => {
           <Button stretched size="m" onClick={() => router.toPanel("addProgramPage")}>Добавить программу</Button>
         </Div>
       </FixedLayout>
-      {alert}
     </Panel>
 
   );

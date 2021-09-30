@@ -1,6 +1,5 @@
 import React from "react";
-import { Avatar, Cell, Group, Header, List, Panel, PanelHeader, PanelHeaderBack, } from "@vkontakte/vkui";
-import { Icon20ChevronRightOutline } from '@vkontakte/icons';
+import { Group, Header, List, Panel, PanelHeader, PanelHeaderBack, } from "@vkontakte/vkui";
 import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import ExerciseItem from "./ExerciseItem";
@@ -11,8 +10,8 @@ interface IAddExerciseProps {
 
 const AddExercisePage: React.FC<IAddExerciseProps> = ({ id, router }) => {
   const { activeExercise, activeMuscleGroup } = useTypeSelector(state => state.app);
-  const openExercise = ()=>{
-    
+  const openExercise = () => {
+
   }
   return (
     <Panel id={id}>
