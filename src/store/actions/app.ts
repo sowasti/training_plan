@@ -1,10 +1,10 @@
 import {
   AppActions,
   AppActionTypes,
+  ISetActiveExercise,
   ISetActiveTrain,
   ISetCount,
-  ISetDaysWeek,
-  ISetExercise,
+  ISetDaysWeek, 
   ISetExerciseTrain,
   ISetMuscleGroup,
   ISetSets,
@@ -49,9 +49,9 @@ export const setMuscleGroup = (payload: ISetMuscleGroup['payload']) => {
     payload
   }
 }
-export const setExercise = (payload: ISetExercise['payload']) => {
+export const setActiveExercise = (payload: ISetActiveExercise['payload']) => {
   return {
-    type: AppActionTypes.APP_SET_EXERCISE,
+    type: AppActionTypes.APP_SET_ACTIVE_EXERCISE,
     payload
   }
 }

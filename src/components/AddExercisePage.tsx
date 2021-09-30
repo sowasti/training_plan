@@ -9,20 +9,16 @@ interface IAddExerciseProps {
 }
 
 const AddExercisePage: React.FC<IAddExerciseProps> = ({ id, router }) => {
-  const {exercise} = useTypeSelector(state=> state.app);
-  console.log(exercise);
+  const {activeExercise} = useTypeSelector(state=> state.app); 
+  console.log(activeExercise)
   return (
     <Panel id={id}>
-      <PanelHeader left={<PanelHeaderBack onClick={()=> router.toBack()}/>}>hjhjhlljl</PanelHeader>
+      <PanelHeader left={<PanelHeaderBack onClick={()=> router.toBack()}/>}>fhfggdhgfh</PanelHeader>
       <Group style={{ paddingBottom: 60 }}>
       <List>
-        {exercise.map((item, i)=>
+        {activeExercise.map((item, i)=>
            <SimpleCell key={i} disabled after={<IconButton>< Icon24AddOutline /></IconButton>}>{item.name}</SimpleCell>
-          )}
-          {/* <SimpleCell disabled after={<IconButton>< Icon24AddOutline /></IconButton>}>Присед</SimpleCell>
-          <SimpleCell disabled after={<IconButton>< Icon24AddOutline /></IconButton>}>Жим</SimpleCell>
-          <SimpleCell disabled after={<IconButton>< Icon24AddOutline /></IconButton>}>Выпады</SimpleCell>
-          <SimpleCell disabled after={<IconButton>< Icon24AddOutline /></IconButton>}>Отведение бедра</SimpleCell> */}
+          )}          
         </List>
       </Group>
       <FixedLayout vertical="bottom">

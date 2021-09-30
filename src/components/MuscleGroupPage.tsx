@@ -10,35 +10,34 @@ interface IMuscleGroupProps {
 }
 
 const MuscleGroupPage: React.FC<IMuscleGroupProps> = ({ id, router }) => {
-  const { muscleGroup} = useTypeSelector(state => state.app);
-  const { setExercise } = useActions();
-  
-  const openMuscleGroup = (name: string) => {
-    console.log(name);
+  const { muscleGroup } = useTypeSelector(state => state.app);
+  const { setActiveExercise } = useActions();
+
+  const openMuscleGroup = (name: string) => {    
     switch (name) {
       case "Плечи":
-        setExercise(muscleGroup[0].exercise);
+        setActiveExercise(muscleGroup[0].exercise);
         break;
       case "Руки":
-        setExercise(muscleGroup[1].exercise);
+        setActiveExercise(muscleGroup[1].exercise);
         break;
       case "Спина":
-        setExercise(muscleGroup[2].exercise);
+        setActiveExercise(muscleGroup[2].exercise);
         break;
       case "Поясница":
-        setExercise(muscleGroup[3].exercise);
+        setActiveExercise(muscleGroup[3].exercise);
         break;
       case "Грудь":
-        setExercise(muscleGroup[4].exercise);
+        setActiveExercise(muscleGroup[4].exercise);
         break;
       case "Пресс":
-        setExercise(muscleGroup[5].exercise);
+        setActiveExercise(muscleGroup[5].exercise);
         break;
       case "Ягодицы":
-        setExercise(muscleGroup[6].exercise);
+        setActiveExercise(muscleGroup[6].exercise);
         break;
       case "Ноги":
-        setExercise(muscleGroup[7].exercise);
+        setActiveExercise(muscleGroup[7].exercise);
         break;
       default:
         break;
@@ -50,7 +49,7 @@ const MuscleGroupPage: React.FC<IMuscleGroupProps> = ({ id, router }) => {
       <PanelHeader left={<PanelHeaderBack onClick={() => router.toBack()} />}>База упражнений</PanelHeader>
       <Group header={<Header mode="secondary">Выберите группу мыщц</Header>}>
         <List>
-          {muscleGroup.map((item, i)=>
+          {muscleGroup.map((item, i) =>
             <CellButton
               key={i}
               before={<Icon56AccessibilityOutline width={32} height={32} />}
