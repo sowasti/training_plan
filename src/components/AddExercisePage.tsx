@@ -3,6 +3,7 @@ import {  Group, Header, List, Panel, PanelHeader, PanelHeaderBack, } from "@vko
 import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import ExerciseItem from "./ExerciseItem";
+import { useActions } from "../hooks/useActions";
 interface IAddExerciseProps {
   id: string
   router: any
@@ -10,8 +11,10 @@ interface IAddExerciseProps {
 
 const AddExercisePage: React.FC<IAddExerciseProps> = ({ id, router }) => {
   const { exercisesInMuscleGroup, activeMuscleGroup } = useTypeSelector(state => state.app);
-  const openExercise = ()=>{
-
+  const { setActiveExercise} = useActions();
+  const openExercise = (item: Object)=>{
+    setActiveExercise(item);
+    router.toPanel("exercisePage");
   }
   return (
     <Panel id={id}>
@@ -22,7 +25,7 @@ const AddExercisePage: React.FC<IAddExerciseProps> = ({ id, router }) => {
             <ExerciseItem
               key={i}
               name={item.name}
-              openExercise={openExercise}
+              openExercise={()=> openExercise(item)}
             />
           )}
         </List>

@@ -35,7 +35,7 @@ const TrainItemPage: React.FC<ITrainItemProps> = ({ id, router }) => {
         {`(${activeTrain.daysWeek}) ${activeTrain.trainName}`}
       </PanelHeader>
       <Group style={{ paddingBottom: 60 }}>
-        {activeTrain.exercisesTrain.length === 0
+        {activeTrain.exercisesToTrain.length === 0
           ? <Placeholder icon={<Icon56ErrorOutline width={50} height={50} />}>Для начала добавьте упражнения!</Placeholder>
           : <>
             <Div>

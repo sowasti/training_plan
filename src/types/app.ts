@@ -2,10 +2,10 @@ export interface ITrainTtems {
   id: number
   trainName: string
   daysWeek: string
-  exercisesToTrain: IExercisesTrain[]
+  exercisesToTrain: IExercisesToTrain[]
 }
-export interface IExercisesTrain {
-  nameExercise: string
+export interface IExercisesToTrain {
+  name: string
   countApproach: number
   approachItems: IApproachItems[]
 }
@@ -18,7 +18,7 @@ export interface IState {
   trainName: string
   daysWeek: string
   trainPlan: ITrainTtems[]
-  exercisesToTrain: IExercisesTrain[]
+  exercisesToTrain: IExercisesToTrain[]
   activeTrain: any
   muscleGroup: any[]
   activeMuscleGroup: string
@@ -58,7 +58,7 @@ export interface ISetTrainPlan {
 }
 export interface ISetExerciseTrain {
   type: AppActionTypes.APP_SET_EXERCISE_TRAIN
-  payload: IExercisesTrain[]
+  payload: IExercisesToTrain[]
 }
 export interface ISetActiveTrain {
   type: AppActionTypes.APP_SET_ACTIVE_TRAIN
@@ -78,7 +78,7 @@ export interface ISetExerciseInMuscleGroup {
 }
 export interface ISetActiveExercise {
   type: AppActionTypes.APP_SET_ACTIVE_EXERCISE
-  payload: any[]
+  payload: any
 }
 export interface ISetSets {
   type: AppActionTypes.APP_SET_SETS

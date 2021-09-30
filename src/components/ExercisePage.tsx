@@ -1,49 +1,54 @@
 import React from "react";
-import { Button, Div, FixedLayout, FormItem, FormLayout, Group, Header,Input, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui";
+import { Button, Div, FixedLayout, FormItem, FormLayout, FormLayoutGroup, Group, Header, Input, Panel, PanelHeader, PanelHeaderBack } from "@vkontakte/vkui";
 import { Icon36Done } from '@vkontakte/icons';
 import { withRouter } from 'react-router-vkminiapps';
+import { useTypeSelector } from "../hooks/useTypeSelector";
 interface IExerciseProps {
   id: string
   router: any
 }
 
 const ExercisePage: React.FC<IExerciseProps> = ({ id, router }) => {
+  const { activeExercise } = useTypeSelector(state => state.app);
   return (
     <Panel id={id}>
-      <PanelHeader left={<PanelHeaderBack onClick={()=> router.toBack()}/>}>Скручивания лежа</PanelHeader>
+      <PanelHeader left={<PanelHeaderBack onClick={() => router.toBack()} />}>{activeExercise.name}</PanelHeader>
       <Group header={<Header mode="secondary">Заполните данные по упражнению</Header>}>
-        <FormLayout style={{paddingBottom: 60}}>
-          <FormItem top="Количество подходов">
-            <Input type="number" name="sets"/>
+        <FormLayout style={{ paddingBottom: 60 }}>
+          <FormItem bottom="Киличество подходов">
+            <Input type="number" name="sets" />
           </FormItem>
-          <FormItem top="1 подход">
-            <div style={{ display: "flex", justifyContent: 'space-between' }}>
-              <p>Вес</p>
-              <Input type="number" name="weigth"/>
-              <p>Повторений</p>
-              <Input type="number" name="count"/>
-            </div>
-          </FormItem>
-          <FormItem top="2 подход">
-            <div style={{ display: "flex", justifyContent: 'space-between' }}>
-              <p>Вес</p>
-              <Input type="number" />
-              <p>Повторений</p>
-              <Input type="number" />
-            </div>
-          </FormItem>
-          <FormItem top="3 подход">
-            <div style={{ display: "flex", justifyContent: 'space-between' }}>
-              <p>Вес</p>
-              <Input type="number" />
-              <p>Повторений</p>
-              <Input type="number" />
-            </div>
-          </FormItem>
+          <Header mode="tertiary">1 подход</Header>
+          <FormLayoutGroup mode="horizontal">
+            <FormItem bottom="Введите вес">
+              <Input type="number" name="weigth" />
+            </FormItem>
+            <FormItem bottom="Сколько повторений">
+              <Input type="number" name="count" />
+            </FormItem>
+          </FormLayoutGroup>
+          <Header mode="tertiary">2 подход</Header>
+          <FormLayoutGroup mode="horizontal">
+            <FormItem bottom="Введите вес">
+              <Input type="number" name="weigth" />
+            </FormItem>
+            <FormItem bottom="Сколько повторений">
+              <Input type="number" name="count" />
+            </FormItem>
+          </FormLayoutGroup>
+          <Header mode="tertiary">3 подход</Header>
+          <FormLayoutGroup mode="horizontal">
+            <FormItem bottom="Введите вес">
+              <Input type="number" name="weigth" />
+            </FormItem>
+            <FormItem bottom="Сколько повторений">
+              <Input type="number" name="count" />
+            </FormItem>
+          </FormLayoutGroup>
         </FormLayout>
-        <FixedLayout>
+        <FixedLayout vertical="bottom">
           <Div>
-            <Button><Icon36Done /></Button>
+            <Button stretched size="m">Добавить</Button>
           </Div>
         </FixedLayout>
       </Group>
