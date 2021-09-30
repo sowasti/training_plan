@@ -1,6 +1,8 @@
 import React from "react";
-import { Button, Cell, Div, FixedLayout, FormItem, FormLayout, Group, Header, Input, List, Panel, PanelHeader, PanelHeaderBack, Select } from "@vkontakte/vkui";
-import { Icon20Add } from '@vkontakte/icons';
+import {
+  Button, Cell, Div, FixedLayout, FormItem, FormLayout, Group, Header, Input, List, Panel, PanelHeader, PanelHeaderBack,
+  Select
+} from "@vkontakte/vkui";
 import { withRouter } from 'react-router-vkminiapps';
 import { useTypeSelector } from "../hooks/useTypeSelector";
 import { useActions } from "../hooks/useActions";
@@ -10,7 +12,7 @@ interface IAddProgramProps {
 }
 
 const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
-  const { daysWeek, trainName, trainPlan, exercisesTrain } = useTypeSelector(state => state.app);
+  const { daysWeek, trainName, trainPlan } = useTypeSelector(state => state.app);
   const { setTrainName, setDaysWeek, setTrainPlan } = useActions();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -25,12 +27,12 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
         break;
     }
   }
-  const addProgram = ()=>{
+  const addProgram = () => {
     const program = {
       id: Date.now(),
       trainName,
       daysWeek,
-      exercisesTrain 
+      exercisesTrain: []
     };
     setTrainPlan([...trainPlan, program]);
     router.toPanel("mainPage");
@@ -41,20 +43,20 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
       <PanelHeader left={<PanelHeaderBack onClick={() => router.toBack()} />}>Добавление тренировки</PanelHeader>
       <FormLayout>
         <FormItem top="Введите название тренировки">
-          <Input type="text" name="trainName" onChange={handleInput} value={trainName}/>
+          <Input type="text" name="trainName" onChange={handleInput} value={trainName} />
         </FormItem>
         <FormItem top="Выберите день недели">
           <Select
             value={daysWeek}
             name="daysWeek"
             options={[
-              { value: "Пн", label: 'Понедельник' },
-              { value: "Вт", label: 'Вторник' },
-              { value: "Ср", label: 'Среда' },
-              { value: "Чт", label: 'Четверг' },
-              { value: "Пт", label: 'Пятница' },
-              { value: "Сб", label: 'Суббота' },
-              { value: "Вс", label: 'Воскресенье' }
+              { value: "1", label: 'Понедельник' },
+              { value: "2", label: 'Вторник' },
+              { value: "3", label: 'Среда' },
+              { value: "4", label: 'Четверг' },
+              { value: "5", label: 'Пятница' },
+              { value: "6", label: 'Суббота' },
+              { value: "7", label: 'Воскресенье' }
             ]}
             onChange={handleInput}
           />
@@ -73,15 +75,6 @@ const AddProgramPage: React.FC<IAddProgramProps> = ({ id, router }) => {
       <FixedLayout vertical="bottom">
         <Div>
           <div style={{ marginBottom: 10 }}>
-            <Button
-              mode="secondary"
-              stretched
-              size="m"
-              before={<Icon20Add />}
-              onClick={() => router.toPanel("muscleGroupPage")}
-            >
-              Добавить упражнения
-            </Button>
           </div>
           <Button
             stretched
